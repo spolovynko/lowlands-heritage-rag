@@ -1,0 +1,8 @@
+Alembic migration environment for Lowlands Lens.
+
+Source configuration lives in pyproject.toml. Database connection settings are
+read from POSTGRES_* environment variables by env.py. Local commands load the
+ignored .env file through uv; no credential belongs in tracked configuration.
+
+Every revision must provide reviewed upgrade and downgrade operations. Phase 1
+contains only the migration-managed pgvector extension.
