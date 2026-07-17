@@ -9,6 +9,13 @@ selection, answers, citations, rights, empty results, structured errors,
 abstention, and unavailable generation without Europeana access, credentials,
 a production database, embeddings, prompts, or an answer model.
 
+Phase 3 adds a separate, bounded Europeana discovery boundary: secure
+header-based credentials, typed Search and Record contracts, a versioned
+English/French/Dutch query matrix, a dependency-inverted HTTP client,
+credential-free tests, a dated coverage report, redacted local Record samples,
+and a proposed corpus-selection policy. It does not replace the Phase 2 mock
+retrieval adapter or connect live Europeana data to the public application.
+
 ## Prerequisites
 
 - Python 3.14
@@ -87,8 +94,35 @@ The tracked `.env.example` intentionally contains no working credentials.
 Europeana discovery will load the application-owned variable through an
 explicit configuration boundary and send it through the preferred `X-Api-Key`
 header. The deprecated `wskey` query parameter is not supported. See the
-[Phase 3 Europeana API lesson](docs/PHASE_3_EUROPEANA_API_LESSON.md) for the
-official documentation links and click-by-click personal-key instructions.
+[Phase 3 master record](docs/adr/0003-phase-3-europeana-discovery-and-corpus-policy.md)
+for the essential API and credential-handling decisions.
+
+Live validation found that Europeana echoes the actual header credential in a
+successful JSON field named `apikey`. Never print or store an unredacted raw
+response. The project live runner recursively redacts credential fields before
+writing ignored local samples.
+
+## Phase 3 discovery
+
+The single source of truth is the
+[Phase 3 master record](docs/adr/0003-phase-3-europeana-discovery-and-corpus-policy.md).
+It combines the architecture decision, API boundary, live evidence, proposed
+corpus policy, operating commands, limitations, and approval gate.
+
+The query matrix and aggregate observation artifact are tracked under
+`config/phase3/`. Complete redacted Record samples remain under ignored
+`data/phase3/`.
+
+Ordinary tests and CI use no credential and make no Europeana request. After
+explicitly approving a bounded live snapshot, run:
+
+```powershell
+uv run --locked --env-file .env python -m lowlands_lens.discovery.run_live --matrix config/phase3/discovery_queries_v1.toml --output-dir data/phase3/YYYY-MM-DD --snapshot-date YYYY-MM-DD
+```
+
+The command runs sequentially, does not retry or traverse cursors, refuses to
+replace existing snapshot files, downloads no media, and prints no raw
+metadata or credential.
 
 Validate Compose interpolation without displaying resolved secrets:
 

@@ -40,6 +40,7 @@ class SearchRequestConfiguration(ExplorationContractModel):
     refinements: tuple[NonEmptyText, ...] = Field(default_factory=tuple)
     facets: tuple[NonEmptyText, ...] = Field(min_length=1)
     profile: Literal["facets"] = "facets"
+    reusability: Literal["open", "restricted", "permission"] | None = None
     rows: int = Field(default=12, ge=1, le=100)
     sample_limit: int = Field(default=6, ge=0, le=100)
     start: int | None = Field(default=None, ge=1)
@@ -107,8 +108,8 @@ class EuropeanaSearchItemPayload(EuropeanaPayloadModel):
     media_type: NonEmptyText | None = Field(default=None, alias="type")
     rights: list[NonEmptyText] = Field(default_factory=list)
     years: list[NonEmptyText] = Field(default_factory=list, alias="year")
-    shown_at: NonEmptyText | None = Field(default=None, alias="edmIsShownAt")
-    preview: NonEmptyText | None = Field(default=None, alias="edmPreview")
+    shown_at: list[NonEmptyText] = Field(default_factory=list, alias="edmIsShownAt")
+    preview: list[NonEmptyText] = Field(default_factory=list, alias="edmPreview")
 
 
 class EuropeanaSearchResponsePayload(EuropeanaPayloadModel):
@@ -148,10 +149,7 @@ class EuropeanaRecordProxyPayload(EuropeanaPayloadModel):
         default_factory=dict,
         alias="dctermsSpatial",
     )
-    media_types: MultilingualValues = Field(
-        default_factory=dict,
-        alias="edmType",
-    )
+    media_type: NonEmptyText | None = Field(default=None, alias="edmType")
     rights: MultilingualValues = Field(default_factory=dict, alias="edmRights")
 
 

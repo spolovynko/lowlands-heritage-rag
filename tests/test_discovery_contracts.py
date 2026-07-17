@@ -36,8 +36,8 @@ def search_payload() -> dict[str, object]:
                 "type": "IMAGE",
                 "rights": ["http://creativecommons.org/publicdomain/mark/1.0/"],
                 "year": ["1958"],
-                "edmIsShownAt": "https://example.invalid/record/001",
-                "edmPreview": "https://example.invalid/preview/001.jpg",
+                "edmIsShownAt": ["https://example.invalid/record/001"],
+                "edmPreview": ["https://example.invalid/preview/001.jpg"],
                 "unknownItemField": "ignored",
             }
         ],
@@ -93,9 +93,7 @@ def record_payload() -> dict[str, object]:
                         "fr": ["Bruxelles"],
                         "nl": ["Brussel"],
                     },
-                    "edmType": {
-                        "def": ["IMAGE"],
-                    },
+                    "edmType": "IMAGE",
                 }
             ],
             "aggregations": [

@@ -142,7 +142,7 @@ language = "en"
 query_text = "Belgium cultural heritage"
 purpose = "Measure discoverable Belgian heritage material with an open reusability signal."
 expected_signal = "Broad heritage records whose grouped reusability metadata indicates open reuse."
-filters = ["YEAR:[1900 TO 2026]", "REUSABILITY:open"]
+filters = ["YEAR:[1900 TO 2026]", "reusability=open"]
 facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
 page_size = 12
 sample_limit = 6

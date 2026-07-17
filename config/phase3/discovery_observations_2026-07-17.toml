@@ -1,0 +1,161 @@
+# Reproducible aggregate observations from the corrected Phase 3 live snapshot.
+# Raw sanitized Record documents remain under ignored data/phase3/2026-07-17-v2.
+
+schema_version = 1
+snapshot_date = "2026-07-17"
+matrix_schema_version = 1
+query_count = 13
+search_request_count = 13
+record_sample_count = 6
+
+[[query_results]]
+query_id = "places-en-001"
+total_results = 29872
+items_count = 12
+
+[[query_results]]
+query_id = "places-fr-001"
+total_results = 17049
+items_count = 12
+
+[[query_results]]
+query_id = "places-nl-001"
+total_results = 20374
+items_count = 12
+
+[[query_results]]
+query_id = "artists-en-001"
+total_results = 8
+items_count = 8
+
+[[query_results]]
+query_id = "architecture-fr-001"
+total_results = 0
+items_count = 0
+
+[[query_results]]
+query_id = "war-nl-001"
+total_results = 11
+items_count = 11
+
+[[query_results]]
+query_id = "colonial-fr-001"
+total_results = 1
+items_count = 1
+
+[[query_results]]
+query_id = "migration-nl-001"
+total_results = 0
+items_count = 0
+
+[[query_results]]
+query_id = "design-en-001"
+total_results = 0
+items_count = 0
+
+[[query_results]]
+query_id = "media-fr-001"
+total_results = 3
+items_count = 3
+
+[[query_results]]
+query_id = "rights-en-001"
+total_results = 453
+items_count = 12
+
+[[query_results]]
+query_id = "contemporary-nl-001"
+total_results = 0
+items_count = 0
+
+[[query_results]]
+query_id = "noisy-en-001"
+total_results = 633040
+items_count = 20
+
+[[concentration]]
+query_id = "places-en-001"
+top_provider = "European Fashion Heritage Association"
+top_provider_share_percent = 54.4
+top_data_provider = "Fashion Museum of Antwerp"
+top_data_provider_share_percent = 26.3
+requested_language_share_percent = 2.3
+
+[[concentration]]
+query_id = "places-fr-001"
+top_provider = "European Fashion Heritage Association"
+top_provider_share_percent = 55.2
+top_data_provider = "Catwalk Pictures"
+top_data_provider_share_percent = 43.2
+requested_language_share_percent = 13.9
+
+[[concentration]]
+query_id = "places-nl-001"
+top_provider = "European Fashion Heritage Association"
+top_provider_share_percent = 48.1
+top_data_provider = "Catwalk Pictures"
+top_data_provider_share_percent = 36.2
+requested_language_share_percent = 3.9
+
+[broad_baseline]
+query_id = "noisy-en-001"
+total_results = 633040
+belgium_country_share_percent = 90.7
+multilingual_language_share_percent = 56.0
+french_language_share_percent = 20.9
+english_language_share_percent = 19.5
+dutch_language_share_percent = 0.8
+image_share_percent = 87.4
+text_share_percent = 11.7
+video_share_percent = 0.8
+sound_share_percent = 0.1
+open_reusability_share_percent = 61.2
+restricted_reusability_share_percent = 23.8
+permission_reusability_share_percent = 15.0
+top_provider = "OpenUp!"
+top_provider_share_percent = 53.6
+top_data_provider = "Meise Botanic Garden"
+top_data_provider_share_percent = 50.9
+
+[sample_completeness]
+sample_count = 6
+with_titles = 6
+with_descriptions = 4
+with_dates = 6
+with_subjects = 5
+with_creators = 4
+with_explicit_places = 3
+with_source_links = 6
+with_aggregation_rights = 6
+web_resource_count = 17
+web_resources_with_rights = 0
+
+[[belgian_connection_samples]]
+record_id = "/794/ark__12148_bpt6k58582363"
+classification = "include"
+evidence = "Title and subject explicitly concern Belgian museums and cities."
+
+[[belgian_connection_samples]]
+record_id = "/9200518/ark__12148_btv1b84328809"
+classification = "include"
+evidence = "Title and subjects explicitly name Belgian cities."
+
+[[belgian_connection_samples]]
+record_id = "/08611/censorship78925"
+classification = "manual_review"
+evidence = "Title names René Magritte, but sampled metadata does not state the Belgian connection."
+
+[[belgian_connection_samples]]
+record_id = "/08623/12431"
+classification = "include"
+evidence = "Descriptions and subjects explicitly identify Belgium, Brussels, and Flanders."
+
+[[belgian_connection_samples]]
+record_id = "/794/ark__12148_bpt6k5807886c"
+classification = "include"
+evidence = "Title explicitly concerns the Belgian Congo and colonial history."
+
+[[belgian_connection_samples]]
+record_id = "/2051943/data_euscreenXL_EUS_F1DB358B92754DFD9D68A585501A9CAD"
+classification = "include"
+evidence = "Subjects and spatial values explicitly include Belgium."

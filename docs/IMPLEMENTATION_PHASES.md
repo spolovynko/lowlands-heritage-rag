@@ -248,6 +248,10 @@ local browser journey were verified on 17 July 2026.
 
 ## Phase 3 — Europeana source discovery and sampling
 
+**Status on 2026-07-17:** implementation, bounded live evidence, report, and
+proposed policy complete. Corpus-policy acceptance remains the human exit-gate
+decision before Phase 4 may begin.
+
 ### Why
 
 The proposed Belgian art-and-history corpus is still a hypothesis. Before building production ingestion, we need to understand result volume, Belgian connection metadata, providers, languages, missingness, rights, dates, media types, contemporary coverage, and query noise.
@@ -304,10 +308,15 @@ The proposed Belgian art-and-history corpus is still a hypothesis. Before buildi
 
 ### Exit gate
 
-- A representative Belgian sample is understood
-- Corpus selection rules are approved
-- The meaning of Belgian connection and the 1900-to-snapshot period is testable from available metadata
-- Expected scale, contemporary coverage, and data-quality risks are documented
+- [x] A representative Belgian sample is understood
+- [ ] Corpus selection rules are explicitly approved
+- [x] The meaning of Belgian connection and the 1900-to-snapshot period is testable from available metadata
+- [x] Expected scale, contemporary coverage, and data-quality risks are documented
+
+Evidence, decisions, operating guidance, and the proposed policy are recorded
+in the [Phase 3 master record](adr/0003-phase-3-europeana-discovery-and-corpus-policy.md).
+Phase 4 remains blocked only on explicit corpus-policy approval and its own
+scope review.
 
 ---
 
