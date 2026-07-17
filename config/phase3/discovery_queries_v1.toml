@@ -1,0 +1,175 @@
+# Phase 3 exploration only.
+# These searches measure Europeana coverage and noise.
+# They are not future corpus inclusion or exclusion rules.
+
+schema_version = 1
+purpose = "phase_3_exploration_only"
+
+[[queries]]
+query_id = "places-en-001"
+category = "belgian_places"
+language = "en"
+query_text = "Brussels OR Antwerp OR Ghent"
+purpose = "Measure records connected to three major Belgian cities using English names."
+expected_signal = "Place-related records with variation across providers, languages, media, and years."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "English city names will retrieve broad international coverage but may underrepresent locally described records."
+
+[[queries]]
+query_id = "places-fr-001"
+category = "belgian_places"
+language = "fr"
+query_text = "Bruxelles OR Anvers OR Gand"
+purpose = "Measure records connected to the same cities using French names."
+expected_signal = "Place-related records with stronger French-language or French-speaking provider signals."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "French city names will change the language and provider distribution compared with English."
+
+[[queries]]
+query_id = "places-nl-001"
+category = "belgian_places"
+language = "nl"
+query_text = "Brussel OR Antwerpen OR Gent"
+purpose = "Measure records connected to the same cities using Dutch names."
+expected_signal = "Place-related records with stronger Dutch-language or Flemish provider signals."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Dutch city names will reveal records not ranked or returned by the English and French formulations."
+
+[[queries]]
+query_id = "artists-en-001"
+category = "artists_and_movements"
+language = "en"
+query_text = "René Magritte OR Belgian surrealism"
+purpose = "Explore coverage of a prominent Belgian artist and related artistic movement."
+expected_signal = "Artworks, photographs, exhibition material, publications, and archival records."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "A named artist combined with a movement will reveal both precise records and broader movement-related noise."
+
+[[queries]]
+query_id = "architecture-fr-001"
+category = "architecture_and_urban_history"
+language = "fr"
+query_text = "architecture Art nouveau Bruxelles"
+purpose = "Explore architectural and urban-history records associated with Brussels Art Nouveau."
+expected_signal = "Building photographs, plans, postcards, architectural drawings, and urban documentation."
+filters = ["YEAR:[1900 TO 2026]", "TYPE:IMAGE"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "French architectural vocabulary will retrieve visually rich Brussels material but may mix buildings with decorative objects."
+
+[[queries]]
+query_id = "war-nl-001"
+category = "war_and_public_memory"
+language = "nl"
+query_text = "België Eerste Wereldoorlog herdenking"
+purpose = "Explore Belgian First World War records and later acts of remembrance."
+expected_signal = "Wartime photographs, memorials, commemorations, documents, and public-memory material."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Combining the event with remembrance vocabulary will retrieve both historical sources and later commemorative records."
+
+[[queries]]
+query_id = "colonial-fr-001"
+category = "colonial_and_postcolonial_history"
+language = "fr"
+query_text = "Congo belge histoire coloniale"
+purpose = "Explore records concerning Belgian colonial history and its representation."
+expected_signal = "Photographs, publications, maps, objects, and institutional records related to the Belgian Congo."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Historical French terminology will retrieve substantial material but may expose outdated descriptions and metadata bias."
+
+[[queries]]
+query_id = "migration-nl-001"
+category = "migration_and_social_change"
+language = "nl"
+query_text = "migratie België sociale verandering"
+purpose = "Explore records documenting migration and social transformation in Belgium."
+expected_signal = "Community photographs, oral histories, publications, news material, and institutional collections."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Broad social vocabulary will reveal relevant community material but may produce high conceptual noise."
+
+[[queries]]
+query_id = "design-en-001"
+category = "design_posters_and_photography"
+language = "en"
+query_text = "Belgian design posters photography"
+purpose = "Explore visual collections involving Belgian design, posters, and photography."
+expected_signal = "Posters, graphic design, advertising, documentary photographs, and collection images."
+filters = ["YEAR:[1900 TO 2026]", "TYPE:IMAGE"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Combining related visual-media terms will expose strong image collections but may concentrate results in a few providers."
+
+[[queries]]
+query_id = "media-fr-001"
+category = "film_audio_text_and_other_media"
+language = "fr"
+query_text = "cinéma radio littérature Belgique"
+purpose = "Explore non-image and mixed-media Belgian cultural records."
+expected_signal = "Film, sound, radio, written works, programs, and related archival material."
+filters = ["YEAR:[1900 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Mixed-media vocabulary will reveal whether discovery is dominated by images or includes meaningful sound, video, and text coverage."
+
+[[queries]]
+query_id = "rights-en-001"
+category = "rights_aware_discovery"
+language = "en"
+query_text = "Belgium cultural heritage"
+purpose = "Measure discoverable Belgian heritage material with an open reusability signal."
+expected_signal = "Broad heritage records whose grouped reusability metadata indicates open reuse."
+filters = ["YEAR:[1900 TO 2026]", "REUSABILITY:open"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "An open-reusability refinement will reduce volume and change the provider and media distribution."
+
+[[queries]]
+query_id = "contemporary-nl-001"
+category = "contemporary_culture"
+language = "nl"
+query_text = "hedendaagse cultuur België"
+purpose = "Explore the visibility of Belgian culture from 2000 through the Phase 3 snapshot year."
+expected_signal = "Recent cultural events, works, photographs, audiovisual records, and institutional material."
+filters = ["YEAR:[2000 TO 2026]"]
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 12
+sample_limit = 6
+hypothesis = "Contemporary material will be less numerous or more rights-restricted than twentieth-century material."
+
+[[queries]]
+query_id = "noisy-en-001"
+category = "broad_and_noisy_searches"
+language = "en"
+query_text = "Belgium"
+purpose = "Establish a deliberately broad baseline for volume, concentration, and false-positive inspection."
+expected_signal = "A large mixed result set containing both useful Belgian connections and substantial ambiguity."
+filters = []
+facets = ["COUNTRY", "DATA_PROVIDER", "LANGUAGE", "PROVIDER", "REUSABILITY", "TYPE", "YEAR"]
+page_size = 20
+sample_limit = 10
+hypothesis = "A country-name-only query will maximize coverage but produce more noise and weaker subject relevance."

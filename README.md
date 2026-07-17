@@ -78,8 +78,17 @@ Edit `.env` locally:
 - `POSTGRES_PORT` is the loopback host port. Use `5432` unless another local
   PostgreSQL process already occupies it; choose another unused port such as
   `5433` when necessary.
+- `LOWLANDS_LENS_EUROPEANA_API_KEY` is the Phase 3 personal Europeana API key.
+  Keep its real value only in the ignored `.env`; never place it in a URL,
+  source file, test fixture, log, report, issue, or chat.
 
 The tracked `.env.example` intentionally contains no working credentials.
+
+Europeana discovery will load the application-owned variable through an
+explicit configuration boundary and send it through the preferred `X-Api-Key`
+header. The deprecated `wskey` query parameter is not supported. See the
+[Phase 3 Europeana API lesson](docs/PHASE_3_EUROPEANA_API_LESSON.md) for the
+official documentation links and click-by-click personal-key instructions.
 
 Validate Compose interpolation without displaying resolved secrets:
 
