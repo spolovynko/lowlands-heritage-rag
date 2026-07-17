@@ -238,6 +238,12 @@ This phase does not include:
 - Mock components can be replaced without redesigning the public contract
 - No Europeana credentials or production integrations are required
 
+### Status
+
+Complete — Phase 2 contracts, replaceable adapters, deterministic fixtures,
+versioned endpoints, static interface, tests, documentation, packaging, and
+local browser journey were verified on 17 July 2026.
+
 ---
 
 ## Phase 3 — Europeana source discovery and sampling

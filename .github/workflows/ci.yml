@@ -31,6 +31,9 @@ jobs:
       - name: Verify package import
         run: uv run --locked python -c "import lowlands_lens"
 
+      - name: Build distribution with packaged interface assets
+        run: uv build
+
       - name: Run unit tests
         run: uv run --locked pytest
 

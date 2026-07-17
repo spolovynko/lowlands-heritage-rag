@@ -3,11 +3,11 @@
 Lowlands Lens is a multilingual, evidence-grounded assistant for Belgian
 cultural heritage from 1900 to the present.
 
-The repository is currently at the Phase 1 foundation. It contains project
-packaging, quality checks, local PostgreSQL/pgvector infrastructure, database
-migrations, architecture decision records, and continuous integration. It does
-not yet contain ingestion, retrieval, embeddings, prompts, or application
-features.
+Phase 2 provides a complete local API-first interface prototype using clearly
+labelled deterministic synthetic records. It demonstrates search, evidence
+selection, answers, citations, rights, empty results, structured errors,
+abstention, and unavailable generation without Europeana access, credentials,
+a production database, embeddings, prompts, or an answer model.
 
 ## Prerequisites
 
@@ -33,6 +33,32 @@ Verify the package import:
 ```powershell
 uv run --locked python -c "import lowlands_lens"
 ```
+
+## Run the Phase 2 application
+
+Start the API and interface from the repository root:
+
+```powershell
+uv run --locked uvicorn lowlands_lens.api.app:app --host 127.0.0.1 --port 8000
+```
+
+Open the local interface at <http://127.0.0.1:8000/>. The generated OpenAPI
+documentation is available at <http://127.0.0.1:8000/docs> and liveness at
+<http://127.0.0.1:8000/api/v1/health>.
+
+Try these deterministic searches:
+
+- `poster` returns a synthetic result.
+- `no matching object` returns a valid empty search.
+- `simulate-search-error` demonstrates a structured operational error.
+
+After selecting evidence, try a normal question, an unsupported subjective
+question, or `simulate-generation-unavailable`. Search evidence remains visible
+for every answer outcome.
+
+The application does not require PostgreSQL or `.env` during Phase 2. See the
+[Phase 2 user journey](docs/PHASE_2_USER_JOURNEY.md) for the complete walkthrough
+and API examples.
 
 ## Local configuration
 
@@ -138,18 +164,24 @@ Run strict static type checking:
 uv run --locked mypy
 ```
 
-GitHub Actions runs the locked installation, import check, tests, linting,
-formatting check, and mypy on pushes and pull requests.
+Build the package and verify that the interface assets are included:
+
+```powershell
+uv build
+```
+
+GitHub Actions runs the locked installation, package build, import check, tests,
+linting, formatting check, and mypy on pushes and pull requests.
 
 ## Repository structure
 
 ```text
 .
 |-- .github/workflows/   # Continuous integration
-|-- docs/                # Design documents and architecture decisions
+|-- docs/                # Design, ADRs, and the Phase 2 user journey
 |-- migrations/          # Alembic environment and revisions
-|-- src/lowlands_lens/   # Importable Python package
-|-- tests/               # Isolated unit tests
+|-- src/lowlands_lens/   # Domain, ports, adapters, API, and static interface
+|-- tests/               # Contract, component, API, and interface tests
 |-- compose.yaml         # Local persistent database boundary
 |-- pyproject.toml       # Package, dependencies, and tool configuration
 `-- uv.lock              # Exact dependency lock

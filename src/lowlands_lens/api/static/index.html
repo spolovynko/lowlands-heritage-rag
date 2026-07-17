@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Converse with clearly labelled synthetic Belgian cultural-heritage records through the Lowlands Lens Phase 2 prototype."
+    />
+    <title>Lowlands Lens — Synthetic heritage assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <div class="aurora" aria-hidden="true">
+      <span class="aurora-blob aurora-a"></span>
+      <span class="aurora-blob aurora-b"></span>
+      <span class="aurora-blob aurora-c"></span>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Lowlands Lens home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Lowlands <em>Lens</em></span>
+      </a>
+      <div class="header-meta">
+        <span class="phase-badge">Phase 2 · synthetic prototype</span>
+        <a class="header-link" href="/docs">OpenAPI</a>
+      </div>
+    </header>
+
+    <main id="thread" class="thread" aria-label="Conversation with the assistant" aria-live="polite">
+      <article class="message from-assistant welcome-message">
+        <span class="avatar" aria-hidden="true">✦</span>
+        <div class="message-body">
+          <p class="eyebrow">Belgium · 1900 → today</p>
+          <h1>Ask the collection.<br />Inspect the evidence.</h1>
+          <p class="welcome-copy">
+            I am a grounded assistant for Belgian art and history. In this
+            prototype I search three deterministic, fictional heritage records
+            and answer only from the evidence you select — every record,
+            provider, and link is clearly marked synthetic.
+          </p>
+          <p class="boundary-note" role="note">
+            <span aria-hidden="true">◇</span>
+            No Europeana access, credentials, database, or answer model is used.
+          </p>
+
+          <p class="chip-row-label">Try a search state</p>
+          <div class="chip-row" aria-label="Demonstration searches">
+            <button type="button" class="chip example-chip" data-query="poster">
+              <span class="chip-kind">Results</span> poster
+            </button>
+            <button type="button" class="chip example-chip" data-query="Bruxelles">
+              <span class="chip-kind">Photo</span> Bruxelles
+            </button>
+            <button type="button" class="chip example-chip" data-query="haven">
+              <span class="chip-kind">Audio</span> haven
+            </button>
+            <button type="button" class="chip example-chip" data-query="no matching object">
+              <span class="chip-kind">Empty</span> no match
+            </button>
+            <button type="button" class="chip example-chip" data-query="simulate-search-error">
+              <span class="chip-kind">Service error</span> simulate
+            </button>
+          </div>
+
+          <p class="chip-row-label">Then answer from selected evidence</p>
+          <div class="chip-row" aria-label="Demonstration answer states">
+            <button type="button" class="chip answer-chip" data-answer="success" disabled>
+              <span class="chip-kind">Answered</span> grounded
+            </button>
+            <button type="button" class="chip answer-chip" data-answer="abstained" disabled>
+              <span class="chip-kind">Abstention</span> unsupported
+            </button>
+            <button type="button" class="chip answer-chip" data-answer="unavailable" disabled>
+              <span class="chip-kind">Generation unavailable</span> degraded
+            </button>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    <footer class="composer-dock">
+      <div class="dock-inner">
+        <div id="evidence-tray" class="evidence-tray" hidden>
+          <span class="tray-label" id="tray-label">Evidence</span>
+          <div id="tray-chips" class="tray-chips"></div>
+          <button type="button" id="tray-clear" class="tray-clear">Clear</button>
+        </div>
+
+        <form id="composer" class="composer">
+          <div class="mode-switch" role="group" aria-label="Composer mode">
+            <button type="button" id="mode-search" class="mode-button is-active" aria-pressed="true">
+              Search
+            </button>
+            <button
+              type="button"
+              id="mode-ask"
+              class="mode-button"
+              aria-pressed="false"
+              disabled
+              title="Select evidence from search results first"
+            >
+              Ask
+            </button>
+          </div>
+          <label class="language-label">
+            <span class="visually-hidden">Language</span>
+            <select id="language" name="language" aria-label="Question and answer language">
+              <option value="en">EN</option>
+              <option value="fr">FR</option>
+              <option value="nl">NL</option>
+            </select>
+          </label>
+          <input
+            id="prompt"
+            name="prompt"
+            type="text"
+            maxlength="500"
+            placeholder="Search the synthetic collection — try poster, Bruxelles, or haven"
+            autocomplete="off"
+            aria-label="Message the assistant"
+            required
+          />
+          <button id="send" class="send-button" type="submit" aria-label="Send">
+            <span aria-hidden="true">↑</span>
+          </button>
+        </form>
+
+        <p class="dock-note">
+          API contract and interface prototype · all displayed records and
+          institutions are fictional · <a href="/docs">inspect the OpenAPI contract</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

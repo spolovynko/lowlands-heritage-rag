@@ -889,7 +889,8 @@ Docker Compose is the target local deployment mechanism. Exact services are intr
 - OpenAI embeddings versus a local multilingual embedding model
 - Exact generation model
 - Exact reranker
-- Streamlit versus a separate web frontend
+- A later interface framework only if the Phase 2 static interface cannot meet
+  measured product needs
 - MLflow versus a lighter experiment store
 - Prometheus/Grafana versus application-native metrics
 
