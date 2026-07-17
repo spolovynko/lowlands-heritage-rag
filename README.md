@@ -13,8 +13,14 @@ Phase 3 adds a separate, bounded Europeana discovery boundary: secure
 header-based credentials, typed Search and Record contracts, a versioned
 English/French/Dutch query matrix, a dependency-inverted HTTP client,
 credential-free tests, a dated coverage report, redacted local Record samples,
-and a proposed corpus-selection policy. It does not replace the Phase 2 mock
+and an accepted corpus-selection policy. It does not replace the Phase 2 mock
 retrieval adapter or connect live Europeana data to the public application.
+
+Phase 4 adds credential-free, restartable Bronze ingestion with cursor
+pagination, bounded retries, deterministic compressed raw storage, SHA-256
+versioning, atomic manifests and checkpoints, quarantine, and selected-failure
+recovery. Its executable CLI currently validates the approved test-only scope
+and refuses live access pending the separate Step 11 gate.
 
 ## Prerequisites
 
@@ -106,8 +112,8 @@ writing ignored local samples.
 
 The single source of truth is the
 [Phase 3 master record](docs/adr/0003-phase-3-europeana-discovery-and-corpus-policy.md).
-It combines the architecture decision, API boundary, live evidence, proposed
-corpus policy, operating commands, limitations, and approval gate.
+It combines the architecture decision, API boundary, live evidence, accepted
+corpus policy, operating commands, limitations, and approval record.
 
 The query matrix and aggregate observation artifact are tracked under
 `config/phase3/`. Complete redacted Record samples remain under ignored
@@ -123,6 +129,29 @@ uv run --locked --env-file .env python -m lowlands_lens.discovery.run_live --mat
 The command runs sequentially, does not retry or traverse cursors, refuses to
 replace existing snapshot files, downloads no media, and prints no raw
 metadata or credential.
+
+## Phase 4 Bronze ingestion
+
+Architecture, storage layout, recovery behavior, operations, evidence, and
+limitations are recorded in the
+[Phase 4 master record](docs/PHASE_4_BRONZE_INGESTION.md) and
+[ADR 0004](docs/adr/0004-phase-4-reliable-bronze-ingestion.md).
+
+Validate the approved test-only boundary without credentials or network access:
+
+```powershell
+uv run --locked lowlands-lens-ingest --matrix config/phase3/discovery_queries_v1.toml --query-id war-nl-001 --output-root data/phase4 --run-id example-validation --candidate-limit 10 --record-request-limit 5 --search-page-limit 10 --validate-only
+```
+
+The safe summary reports only identifiers, limits, status, and paths. Running
+without `--validate-only` is deliberately disabled until the exact Step 11 live
+budget is explicitly approved. No Phase 4 component downloads linked media.
+
+Run the focused Phase 4 tests:
+
+```powershell
+uv run --locked pytest tests/test_ingestion_contracts.py tests/test_bronze_storage.py tests/test_ingestion_pagination_retry.py tests/test_ingestion_e2e.py tests/test_ingestion_cli.py
+```
 
 Validate Compose interpolation without displaying resolved secrets:
 
@@ -223,7 +252,7 @@ linting, formatting check, and mypy on pushes and pull requests.
 |-- .github/workflows/   # Continuous integration
 |-- docs/                # Design, ADRs, and the Phase 2 user journey
 |-- migrations/          # Alembic environment and revisions
-|-- src/lowlands_lens/   # Domain, ports, adapters, API, and static interface
+|-- src/lowlands_lens/   # Domain, discovery, ingestion, API, and adapters
 |-- tests/               # Contract, component, API, and interface tests
 |-- compose.yaml         # Local persistent database boundary
 |-- pyproject.toml       # Package, dependencies, and tool configuration

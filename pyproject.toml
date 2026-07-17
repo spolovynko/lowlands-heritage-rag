@@ -15,6 +15,9 @@ dependencies = [
     "uvicorn>=0.51.0,<0.52",
 ]
 
+[project.scripts]
+lowlands-lens-ingest = "lowlands_lens.ingestion.cli:main"
+
 [build-system]
 requires = ["uv_build>=0.11.28,<0.12"]
 build-backend = "uv_build"

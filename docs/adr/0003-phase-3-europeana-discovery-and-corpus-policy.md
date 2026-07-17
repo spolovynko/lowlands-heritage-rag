@@ -13,8 +13,8 @@ corpus, but only through explicit record-level policy. A broad country query is
 too ambiguous, concentrated, and image-heavy to define the corpus.
 
 The corpus-selection rules in this record were explicitly approved on
-2026-07-17. Phase 4 has not started and still requires its own bounded-scope
-agreement.
+2026-07-17. Phase 4 subsequently implemented the approved test-only Bronze
+boundary; live validation remains separately gated.
 
 ## 2. Boundary
 

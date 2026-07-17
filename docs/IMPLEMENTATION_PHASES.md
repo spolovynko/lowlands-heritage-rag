@@ -377,9 +377,15 @@ A useful ingestion pipeline must be restartable, idempotent, observable, and abl
 
 ### Exit gate
 
-- The target sample can be ingested twice without duplication
-- An interrupted run resumes correctly
-- Every raw record is traceable to a request and run
+- [x] The approved test-only target can be ingested twice without duplication
+- [x] An interrupted run resumes correctly from durable state
+- [x] Every raw record is traceable to a request and run
+
+Architecture, operation, recovery, limitations, and credential-free exit
+evidence are recorded in the
+[Phase 4 master record](PHASE_4_BRONZE_INGESTION.md). The technical exit gate is
+complete within the explicitly approved test-only boundary. Bounded live
+validation remains separately gated and was not executed.
 
 ---
 
