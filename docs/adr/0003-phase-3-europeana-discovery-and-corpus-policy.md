@@ -1,6 +1,6 @@
 # ADR 0003 and Phase 3 master record
 
-- Status: Proposed pending corpus-policy approval
+- Status: Accepted
 - Date: 2026-07-17
 - Scope: Europeana source discovery and corpus-policy validation
 - Role: Single source of truth for Phase 3
@@ -12,8 +12,9 @@ checks are complete. Europeana can support a useful Belgian cultural-heritage
 corpus, but only through explicit record-level policy. A broad country query is
 too ambiguous, concentrated, and image-heavy to define the corpus.
 
-Phase 4 has not started. The remaining governance gate is explicit approval of
-the proposed corpus-selection rules in this record.
+The corpus-selection rules in this record were explicitly approved on
+2026-07-17. Phase 4 has not started and still requires its own bounded-scope
+agreement.
 
 ## 2. Boundary
 
